@@ -5448,10 +5448,10 @@ onUnmounted(() => {
         <!-- Header (Removed relative background div from here since moved to top) -->
 
         <!-- Header -->
-        <header class="relative z-30 container mx-auto px-6 mt-6 max-w-7xl">
-            <div class="grid grid-cols-6 gap-6 items-center">
-                <!-- Left: Brand & Nav (3 Cols for ample breathing room) -->
-                <div class="col-span-3 flex items-center justify-between pr-2 lg:pr-4">
+        <header class="relative z-30 container mx-auto px-3 sm:px-6 mt-3 sm:mt-6 max-w-7xl">
+            <div class="flex flex-col md:grid md:grid-cols-6 gap-3 sm:gap-6 items-center">
+                <!-- Top Row in Mobile / Left in Desktop: Brand & Nav (3 Cols in desktop) -->
+                <div class="w-full md:col-span-3 flex items-center justify-between pr-0 md:pr-2 lg:pr-4">
                     <!-- Brand Logo -->
                     <div class="flex items-center space-x-1.5 sm:space-x-3 select-none flex-shrink-0">
                         <div class="flex items-center space-x-1 sm:space-x-2 text-white">
@@ -5459,72 +5459,78 @@ onUnmounted(() => {
                             <span class="text-white/40 font-bold text-lg sm:text-xl lg:text-2xl leading-none select-none">-</span>
                             <h2 class="text-sky-300 font-extrabold text-lg sm:text-xl lg:text-2xl tracking-wider uppercase leading-none drop-shadow-sm">{{ agentHeaderTitle.replace('CXC ', '') }}</h2>
                         </div>
-                        <img :src="agentLogoSrc" alt="CXC Globe" class="h-10 w-10 sm:h-12 w-12 lg:h-14 lg:w-14 object-contain hover:rotate-12 transition-transform duration-300 drop-shadow-[0_4px_12px_rgba(255,255,255,0.2)] flex-shrink-0" />
+                        <img :src="agentLogoSrc" alt="CXC Globe" class="h-8 w-8 sm:h-12 sm:w-12 lg:h-14 lg:w-14 object-contain hover:rotate-12 transition-transform duration-300 drop-shadow-[0_4px_12px_rgba(255,255,255,0.2)] flex-shrink-0" />
                     </div>
 
-                    <!-- Nav Icons -->
-                    <div class="flex items-center space-x-1 sm:space-x-2 relative flex-shrink-0">
-                         <button @click="reloadPage" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center transition border border-white/20 shadow-md" title="Reload Home">
-                            <i class="fas fa-home text-white text-sm"></i>
-                        </button>
-                        <!-- User Name Button -->
-                        <button ref="agentProfileButton" @click="toggleAgentDetail" class="flex items-center bg-white/20 hover:bg-white/30 rounded-full px-3 py-1 border border-white/20 shadow-md ml-1 sm:ml-2 h-8 transition cursor-pointer">
-                            <i class="fas fa-user text-white text-xs mr-2"></i>
-                            <span class="text-xs text-white font-bold uppercase tracking-wide truncate max-w-[50px] sm:max-w-[80px] lg:max-w-[120px]">{{ currentUser?.name || currentUser?.employee?.name || 'User' }}</span>
-                        </button>
-                        <!-- Logout Button (Sign Off) -->
-                        <button @click="logout" class="w-8 h-8 rounded-full bg-white/20 hover:bg-red-500/80 flex items-center justify-center transition border border-white/20 shadow-md ml-1 sm:ml-2" title="Sign Off">
-                            <i class="fas fa-sign-out-alt text-white text-xs"></i>
-                        </button>
+                    <!-- Right Controls in Mobile Header: Nav Icons & BNI Logo -->
+                    <div class="flex items-center space-x-2">
+                        <!-- Nav Icons -->
+                        <div class="flex items-center space-x-1 sm:space-x-2 relative flex-shrink-0">
+                             <button @click="reloadPage" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center transition border border-white/20 shadow-md" title="Reload Home">
+                                <i class="fas fa-home text-white text-sm"></i>
+                            </button>
+                            <!-- User Name Button -->
+                            <button ref="agentProfileButton" @click="toggleAgentDetail" class="flex items-center bg-white/20 hover:bg-white/30 rounded-full px-2.5 sm:px-3 py-1 border border-white/20 shadow-md ml-1 sm:ml-2 h-8 transition cursor-pointer">
+                                <i class="fas fa-user text-white text-xs mr-1.5 sm:mr-2"></i>
+                                <span class="text-xs text-white font-bold uppercase tracking-wide truncate max-w-[70px] sm:max-w-[80px] lg:max-w-[120px]">{{ currentUser?.name || currentUser?.employee?.name || 'User' }}</span>
+                            </button>
+                            <!-- Logout Button (Sign Off) -->
+                            <button @click="logout" class="w-8 h-8 rounded-full bg-white/20 hover:bg-red-500/80 flex items-center justify-center transition border border-white/20 shadow-md ml-1 sm:ml-2" title="Sign Off">
+                                <i class="fas fa-sign-out-alt text-white text-xs"></i>
+                            </button>
 
-                        <!-- Agent Detail Dropdown (Positioned relative to this container) -->
-                        <transition name="fade-slide">
-                            <div v-if="isAgentDetailModalOpen" id="agent-detail-dropdown" class="absolute top-10 right-0 z-[100] w-80 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden text-gray-800">
-                                <!-- Header -->
-                                <div class="bg-teal-600 px-4 py-3 flex justify-between items-center bg-gradient-to-r from-teal-500 to-teal-700">
-                                    <h3 class="text-white font-bold text-sm flex items-center">
-                                        <i class="fas fa-id-card mr-2"></i> Agent Profile
-                                    </h3>
-                                    <button @click="isAgentDetailModalOpen = false" class="text-white/80 hover:text-white transition">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <!-- Body -->
-                                <div class="p-4 bg-gray-50">
-                                    <div class="flex items-center space-x-3 mb-3">
-                                        <div class="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 border border-teal-200 shadow-sm shrink-0">
-                                            <span class="text-lg font-bold">{{ userInitials }}</span>
+                            <!-- Agent Detail Dropdown (Positioned relative to this container) -->
+                            <transition name="fade-slide">
+                                <div v-if="isAgentDetailModalOpen" id="agent-detail-dropdown" class="absolute top-10 right-0 z-[100] w-72 sm:w-80 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden text-gray-800">
+                                    <!-- Header -->
+                                    <div class="bg-teal-600 px-4 py-3 flex justify-between items-center bg-gradient-to-r from-teal-500 to-teal-700">
+                                        <h3 class="text-white font-bold text-sm flex items-center">
+                                            <i class="fas fa-id-card mr-2"></i> Agent Profile
+                                        </h3>
+                                        <button @click="isAgentDetailModalOpen = false" class="text-white/80 hover:text-white transition">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <!-- Body -->
+                                    <div class="p-4 bg-gray-50">
+                                        <div class="flex items-center space-x-3 mb-3">
+                                            <div class="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 border border-teal-200 shadow-sm shrink-0">
+                                                <span class="text-lg font-bold">{{ userInitials }}</span>
+                                            </div>
+                                            <div class="overflow-hidden">
+                                                <h4 class="font-bold text-gray-800 text-sm truncate" :title="agentNameDisplay">{{ agentNameDisplay }}</h4>
+                                                <div class="text-[10px] text-teal-600 font-bold uppercase tracking-wider bg-teal-50 px-1.5 py-0.5 rounded inline-block mt-0.5 border border-teal-100">
+                                                    {{ currentUser?.username || currentUser?.npp || '-' }}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="overflow-hidden">
-                                            <h4 class="font-bold text-gray-800 text-sm truncate" :title="agentNameDisplay">{{ agentNameDisplay }}</h4>
-                                            <div class="text-[10px] text-teal-600 font-bold uppercase tracking-wider bg-teal-50 px-1.5 py-0.5 rounded inline-block mt-0.5 border border-teal-100">
-                                                {{ currentUser?.username || currentUser?.npp || '-' }}
+                                        
+                                        <div class="bg-white rounded border border-gray-100 shadow-sm text-xs divide-y divide-gray-100">
+                                            <div class="flex justify-between items-center p-2">
+                                                <span class="text-gray-500 font-bold uppercase">Email</span>
+                                                <span class="font-medium text-gray-800 truncate pl-2 max-w-[150px]" :title="currentUser?.employee?.email || currentUser?.email">{{ currentUser?.employee?.email || currentUser?.email || '-' }}</span>
+                                            </div>
+                                            <div class="flex justify-between items-center p-2">
+                                                <span class="text-gray-500 font-bold uppercase">Role ID</span>
+                                                <span class="font-medium text-gray-800">{{ selectedRoleObj?.role || '-' }}</span>
+                                            </div>
+                                            <div class="flex justify-between items-center p-2">
+                                                <span class="text-gray-500 font-bold uppercase">Unit ID</span>
+                                                <span class="font-medium text-gray-800">{{ selectedRoleObj?.unit || '-' }}</span>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <div class="bg-white rounded border border-gray-100 shadow-sm text-xs divide-y divide-gray-100">
-                                        <div class="flex justify-between items-center p-2">
-                                            <span class="text-gray-500 font-bold uppercase">Email</span>
-                                            <span class="font-medium text-gray-800 truncate pl-2 max-w-[150px]" :title="currentUser?.employee?.email || currentUser?.email">{{ currentUser?.employee?.email || currentUser?.email || '-' }}</span>
-                                        </div>
-                                        <div class="flex justify-between items-center p-2">
-                                            <span class="text-gray-500 font-bold uppercase">Role ID</span>
-                                            <span class="font-medium text-gray-800">{{ selectedRoleObj?.role || '-' }}</span>
-                                        </div>
-                                        <div class="flex justify-between items-center p-2">
-                                            <span class="text-gray-500 font-bold uppercase">Unit ID</span>
-                                            <span class="font-medium text-gray-800">{{ selectedRoleObj?.unit || '-' }}</span>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                        </transition>
+                            </transition>
+                        </div>
+
+                        <!-- Mobile BNI logo right next to icons -->
+                        <img :src="getImagePath('images/logo-bni.png')" alt="BNI Call" class="h-7 object-contain drop-shadow-md md:hidden flex-shrink-0">
                     </div>
                 </div>
 
-                <!-- Center: Search Bar (2 Cols) -->
-                 <div class="col-span-2 px-2 sm:px-4 relative z-50">
+                <!-- Center: Search Bar (2 Cols on desktop, full width on mobile) -->
+                 <div class="w-full md:col-span-2 px-0 md:px-4 relative z-50">
                     <div class="flex items-center bg-white rounded shadow-inner overflow-hidden h-8 w-full max-w-xl mx-auto border border-white/30 group cursor-text" @click="openOmnisearch">
                         <input type="text" placeholder="Cari... (Ctrl+K)" v-model="searchQuery" @click.stop="openOmnisearch" @input="handleAgentSearch" @keydown.enter.prevent="submitAgentSearch" @focus="searchQuery && (isSearchDropdownOpen = true)" class="flex-1 border-none focus:ring-0 text-gray-700 placeholder-gray-400 text-xs px-3 h-full outline-none">
                         <button type="button" @click.stop="openOmnisearch" class="hidden sm:inline-flex items-center gap-1 mr-1 px-1.5 py-0.5 text-[10px] font-bold text-gray-500 bg-gray-100 hover:bg-gray-200 rounded border border-gray-200 transition shadow-xs" title="Buka Omnisearch (Ctrl + K)">
@@ -5536,7 +5542,7 @@ onUnmounted(() => {
                     </div>
 
                     <!-- Live Search Dropdown -->
-                    <div v-if="isSearchDropdownOpen && searchQuery" class="absolute top-full left-4 right-4 mt-2 bg-white rounded-lg shadow-2xl overflow-hidden max-w-xl mx-auto border border-gray-100 z-[100]">
+                    <div v-if="isSearchDropdownOpen && searchQuery" class="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-2xl overflow-hidden max-w-xl mx-auto border border-gray-100 z-[100]">
                          <div v-if="agentNews.length > 0" class="max-h-[400px] overflow-y-auto">
                             <div v-for="item in agentNews" :key="item.id" 
                                  @click="viewAgentNews(item); isSearchDropdownOpen = false; searchQuery = '';" 
@@ -5557,15 +5563,15 @@ onUnmounted(() => {
                     <div v-if="isSearchDropdownOpen" @click="isSearchDropdownOpen = false" class="fixed inset-0 z-[40] cursor-default"></div>
                 </div>
                 
-                <!-- Right: BNI Call Logo (Aligns with Menu 5 - 1 Col) -->
-                 <div class="col-span-1 flex justify-end">
+                <!-- Right: BNI Call Logo (Desktop only, 1 Col) -->
+                 <div class="hidden md:flex md:col-span-1 justify-end">
                      <img :src="getImagePath('images/logo-bni.png')" alt="BNI Call" class="h-8 sm:h-10 lg:h-12 object-contain drop-shadow-lg transform scale-110 origin-right flex-shrink-0">
                  </div>
             </div>
         </header>
 
         <!-- Main Content -->
-        <main class="relative z-10 container mx-auto px-6 mt-4 flex-1 max-w-7xl pb-8">
+        <main class="relative z-10 container mx-auto px-3 sm:px-6 mt-4 flex-1 max-w-7xl pb-8">
             <QuickMenuGrid
                 :get-menu-items="getMenuItems"
                 :menu-layout-config="menuLayoutConfig"

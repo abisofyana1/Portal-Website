@@ -1,7 +1,7 @@
 <template>
-    <!-- Right Column (Hero Banner) - Col Span 4 -->
+    <!-- Right Column (Hero Banner) - Col Span 2 on mobile, 4 on desktop -->
     <!-- Spans the height of Menu 6 + gap + Menu 8/9 approx -->
-    <div class="col-span-4">
+    <div class="col-span-2 md:col-span-4">
         <!-- Menu 7: Banner/News Carousel -->
         <div class="bg-gray-900 rounded-2xl shadow-2xl overflow-hidden relative border-4 border-white/90 group h-[17.5rem] select-none cursor-pointer"
              @mousedown="(e) => { onDragStart(e); handleMiddleClickBanner(e); }"

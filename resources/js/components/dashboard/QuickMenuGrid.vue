@@ -1,11 +1,11 @@
 <template>
-    <div class="grid grid-cols-6 gap-6 h-full">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-6 h-full">
                 
                 <!-- Menu 1-15 Dynamic Mapping -->
                 <!-- ROW 1 -->
                 
-                <!-- Menu 1: Col Span 2 -->
-                <div class="col-span-2">
+                <!-- Menu 1: Col Span 2 (full width on 2-col mobile, 2 cols on desktop) -->
+                <div class="col-span-2 md:col-span-2">
                     <div class="min-h-0 min-w-0 bg-orange-500 rounded-xl overflow-hidden shadow-lg border-t-4 border-orange-300 relative h-32 group transition text-white" :style="[getMenuNewsImageStyle('Menu 1'), getMenuBackgroundStyle('Menu 1')]">
                         <div class="p-4 h-full flex flex-col justify-start overflow-y-auto custom-scrollbar">
                              <!-- Case 1: Multiple Items -->
@@ -308,7 +308,7 @@
 
 
                 <!-- ROW 2 & 3 -->
-                <div class="col-span-2 flex flex-col gap-6">
+                <div class="col-span-2 md:col-span-2 flex flex-col gap-4 sm:gap-6">
                      <!-- Menu 6: Sharing Moment -->
 
                      <div class="min-h-0 min-w-0 bg-teal-600 rounded-xl overflow-hidden shadow-lg border-t-4 border-teal-300 relative group h-32 transition text-white" :style="[getMenuNewsImageStyle('Menu 6'), getMenuBackgroundStyle('Menu 6')]">
@@ -503,8 +503,8 @@
 
                 <!-- ROW 4 -->
 
-                <!-- Menu 10: Promo - Col Span 2 -->
-                <div class="col-span-2">
+                <!-- Menu 10: Promo - Col Span 2 (full width on 2-col mobile, 2 cols on desktop) -->
+                <div class="col-span-2 md:col-span-2">
                      <div class="min-h-0 min-w-0 bg-yellow-600 rounded-xl overflow-hidden shadow-lg relative h-48 group transition text-white" :style="[getMenuNewsImageStyle('Menu 10'), getMenuBackgroundStyle('Menu 10')]">
                         <!-- Case 1: Multiple Items -->
                         <div v-if="getMenuItems('Menu 10').length >= 1" class="h-full w-full">
@@ -576,11 +576,11 @@
                         </div>
                     </div>
                 </div>
-<!-- Bottom Right Area - Col Span 4 -->
-                <div class="col-span-4 grid grid-cols-4 gap-6 h-48">
+                <!-- Bottom Right Area - Col Span 4 (desktop: 4 cols, mobile: full 2 cols, h-auto or h-48) -->
+                <div class="col-span-2 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 min-h-[12rem] h-auto md:h-48">
                     
                     <!-- Sub-Grid for Menu 11, 12, 13, 14 - Col Span 2 -->
-                    <div class="col-span-2 grid grid-cols-2 grid-rows-2 gap-4 h-full">
+                    <div class="col-span-1 sm:col-span-2 md:col-span-2 grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4 h-48 md:h-full">
                          <!-- Menu 11 -->
                          <div class="min-h-0 min-w-0 bg-red-600 rounded-lg shadow-md flex transition border-b-4 border-red-800 text-white p-2 h-full group relative overflow-hidden" :style="[getMenuNewsImageStyle('Menu 11'), getMenuBackgroundStyle('Menu 11')]">
                               <div v-if="getMenuItems('Menu 11').length >= 1" class="h-full w-full">
@@ -812,7 +812,7 @@
                     </div>
 
                     <!-- Menu 15: Corner Large -->
-                    <div class="col-span-2">
+                    <div class="col-span-1 sm:col-span-2 md:col-span-2 h-48 md:h-full">
                         <div class="min-h-0 min-w-0 bg-teal-700/80 rounded-xl shadow-lg border border-teal-500/50 relative overflow-hidden h-full group transition text-white" :style="[getMenuNewsImageStyle('Menu 15'), getMenuBackgroundStyle('Menu 15')]">
                              <div v-if="getMenuItems('Menu 15').length >= 1" class="absolute inset-0 z-10">
                                   <!-- LIST -->
