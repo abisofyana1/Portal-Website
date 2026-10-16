@@ -22,6 +22,7 @@ function generateHtml() {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PortalCXC - Live Demo</title>
     <link rel="icon" id="app-favicon" href="./favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 ${cssLinks}
 </head>
 <body class="bg-gray-100">

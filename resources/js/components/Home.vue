@@ -921,7 +921,7 @@ const agentHeaderTitle = computed(() => {
 });
 
 const agentLogoSrc = computed(() => {
-    return '/images/Logo Globe (No BG).png';
+    return getImagePath('images/Logo Globe (No BG).png');
 });
 
 // Update Document Title based on Selected Unit
@@ -933,11 +933,11 @@ watch([selectedRoleObj, currentLayout], ([newRole, newLayout]) => {
         document.title = `Knowledge ${newRole.unit}`;
         
         // Use the new requested logo for all Knowledge pages
-        let iconPath = '/images/logo-portalcxc.png';
+        let iconPath = getImagePath('images/logo-portalcxc.png');
         if (faviconLink) faviconLink.href = iconPath;
     } else {
         document.title = 'PortalCXC';
-        if (faviconLink) faviconLink.href = '/images/logo-portalcxc.png';
+        if (faviconLink) faviconLink.href = getImagePath('images/logo-portalcxc.png');
     }
 }, { immediate: true });
 
@@ -2502,7 +2502,7 @@ const getCachedSettings = () => {
             // Extract background immediately
             const bg = portalSettings.value.find(s => s.section === 'background');
             if (bg && bg.image_name) {
-                backgroundUrl.value = `/images/${bg.image_name}`;
+                backgroundUrl.value = getImagePath(`images/${bg.image_name}`);
             }
             return data || [];
         }
@@ -2533,7 +2533,7 @@ function parseLayoutConfig() {
     // Sync primary background
     const bg = portalSettings.value.find(s => s.section === 'background');
     if (bg && bg.image_name) {
-        backgroundUrl.value = `/images/${bg.image_name}`;
+        backgroundUrl.value = getImagePath(`images/${bg.image_name}`);
     }
 }
 
@@ -5543,7 +5543,7 @@ onUnmounted(() => {
                 
                 <!-- Right: BNI Call Logo (Aligns with Menu 5 - 1 Col) -->
                  <div class="col-span-1 flex justify-end">
-                     <img :src="'/images/logo-bni.png'" alt="BNI Call" class="h-8 sm:h-10 lg:h-12 object-contain drop-shadow-lg transform scale-110 origin-right flex-shrink-0">
+                     <img :src="getImagePath('images/logo-bni.png')" alt="BNI Call" class="h-8 sm:h-10 lg:h-12 object-contain drop-shadow-lg transform scale-110 origin-right flex-shrink-0">
                  </div>
             </div>
         </header>
@@ -5713,7 +5713,7 @@ onUnmounted(() => {
                                      <div class="col-span-3 bg-gray-100 p-3 border-r text-xs text-gray-600 font-semibold self-center h-full flex items-center">Background Image</div>
                                      <div class="col-span-6 bg-white p-3 border-r text-xs text-gray-400 flex items-center gap-3">
                                          <div v-if="portalSettingsBySection.background[0]?.image_name" class="w-10 h-10 rounded border overflow-hidden shrink-0 bg-gray-100">
-                                              <img :src="`/images/${portalSettingsBySection.background[0].image_name}`" class="w-full h-full object-cover">
+                                              <img :src="getImagePath(`images/${portalSettingsBySection.background[0].image_name}`)" class="w-full h-full object-cover">
                                          </div>
                                          <input type="text" v-if="portalSettingsBySection.background[0]" v-model="portalSettingsBySection.background[0].image_name" class="w-full border-none focus:ring-0 p-0 text-gray-600 font-medium">
                                          <span v-else>Blue Polygon.png</span>
@@ -7951,7 +7951,7 @@ onUnmounted(() => {
                           class="bg-white p-3 rounded border border-gray-200 shadow-sm hover:shadow-md hover:border-teal-300 cursor-pointer flex items-center transition group relative">
                           
                           <div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-600 mr-4 group-hover:bg-teal-600 group-hover:text-white transition">
-                               <img v-if="sub.image_name && sub.image_name.includes('.')" :src="`/images/${sub.image_name}`" class="w-6 h-6 object-contain">
+                               <img v-if="sub.image_name && sub.image_name.includes('.')" :src="getImagePath(`images/${sub.image_name}`)" class="w-6 h-6 object-contain">
                                <i v-else :class="['fas', 'fa-' + (sub.image_name || 'link'), 'text-lg']"></i>
                           </div>
                           

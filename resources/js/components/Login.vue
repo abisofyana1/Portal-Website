@@ -84,7 +84,7 @@ onMounted(async () => {
             const { data } = JSON.parse(cached);
             const bgSetting = data.find(s => s.section === 'background');
             if (bgSetting && bgSetting.image_name) {
-                portalBackground.value = `/images/${bgSetting.image_name}`;
+                portalBackground.value = getImagePath(`images/${bgSetting.image_name}`);
             }
         } catch (e) { console.error("Cache parse error", e); }
     }
@@ -93,7 +93,7 @@ onMounted(async () => {
         const response = await axios.get('/api/portal-settings');
         const bgSetting = response.data.find(s => s.section === 'background');
         if (bgSetting && bgSetting.image_name) {
-            const bgUrl = `/images/${bgSetting.image_name}`;
+            const bgUrl = getImagePath(`images/${bgSetting.image_name}`);
             portalBackground.value = bgUrl;
         }
         localStorage.setItem(CACHE_KEY, JSON.stringify({
@@ -104,6 +104,13 @@ onMounted(async () => {
         console.error("Failed to fetch login background", e);
     }
 });
+
+const getImagePath = (path) => {
+    if (!path) return '';
+    if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) return path;
+    const clean = path.startsWith('/') ? path.slice(1) : path;
+    return `./${clean}`;
+};
 
 const login = async () => {
     errorMessage.value = '';
@@ -148,14 +155,14 @@ const login = async () => {
 <template>
     <div v-if="!isCheckingSession" class="min-h-screen flex items-center justify-center bg-gray-100" 
          :style="{ 
-            backgroundImage: portalBackground ? `url(${portalBackground})` : 'url(/images/background.png)', 
+            backgroundImage: portalBackground ? `url(${portalBackground})` : `url(${getImagePath('images/background.png')})`, 
             backgroundSize: 'cover',
             backgroundPosition: 'center'
          }">
         <!-- Login Form Content ... -->
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md bg-opacity-90">
             <div class="text-center mb-6">
-                <img :src="'/images/logo.png'" alt="Logo" class="mx-auto h-12 mb-2">
+                <img :src="getImagePath('images/logo.png')" alt="Logo" class="mx-auto h-12 mb-2">
                 <h1 class="text-2xl font-bold text-gray-800">PortalCXC Login</h1>
             </div>
             <div v-if="errorMessage" class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
