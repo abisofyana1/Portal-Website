@@ -1,0 +1,357 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.tiny-popup { height: 30px !important; min-height: 30px !important; overflow: hidden !important; } .tiny-popup .swal2-title, .tiny-popup .swal2-html-container, .tiny-popup .swal2-icon { display: none !important; } .tiny-popup .swal2-actions { margin: 0 !important; height: 100% !important; align-items: center !important; } .tiny-popup .swal2-confirm { padding: 2px !important; font-size: 10px !important; margin: 0 !important; }
+
+/* Custom SweetAlert styles */
+.swal2-popup-small {
+    padding: 1em !important;
+    width: 28em !important;
+}
+.swal2-popup-small .swal2-title {
+    padding: 0.2em 0 !important;
+    margin: 0 !important;
+    font-size: 1.3em !important;
+}
+.swal2-popup-small .swal2-html-container {
+    margin: 0.5em 0 1em !important;
+    padding: 0 !important;
+    font-size: 0.9em !important;
+}
+.swal2-popup-small .swal2-actions {
+    margin-top: 0 !important;
+}
+.swal2-icon-small {
+    transform: scale(0.65) !important;
+    margin-top: 0.2em !important;
+    margin-bottom: 0 !important;
+}
+.swal2-btn-small {
+    padding: 0.4em 1.5em !important;
+    font-size: 0.9em !important;
+}
+
+/* Hide native eye icon on Edge/IE for password inputs */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+/* Rich Text List Styling (CKEditor & Announcement Pop-up Content) */
+.ck-content ul,
+.announcement-content ul {
+    list-style-type: disc;
+    padding-left: 2rem !important;
+    margin-top: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    display: block !important;
+}
+.ck-content ol,
+.announcement-content ol {
+    list-style-type: decimal;
+    padding-left: 2rem !important;
+    margin-top: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    display: block !important;
+}
+.ck-content li,
+.announcement-content li {
+    display: list-item !important;
+    margin-bottom: 0.35rem !important;
+}
+.ck-content ul ul,
+.announcement-content ul ul {
+    list-style-type: circle;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+}
+.ck-content ul ul ul,
+.announcement-content ul ul ul {
+    list-style-type: square;
+}
+.ck-content ol ol,
+.announcement-content ol ol {
+    list-style-type: lower-alpha;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+}
+.ck-content ol ol ol,
+.announcement-content ol ol ol {
+    list-style-type: lower-roman;
+}
+
+/* Rich Text Image Quality & Interactive Zoom */
+.ck-content img,
+.announcement-content img {
+    image-rendering: auto !important;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Office Multilevel List & Custom Bullet Symbols (➢, ▪, ✔, •, ❖) */
+.ck-content .cxc-bullet-prefix,
+.ck-content .cxc-bullet-symbol,
+.prose .cxc-bullet-prefix,
+.prose .cxc-bullet-symbol {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-right: 6px !important;
+    min-width: 14px !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: bold !important;
+    font-size: 1em !important;
+    user-select: none !important;
+}
+
+.ck-content .cxc-bullet-line,
+.prose .cxc-bullet-line {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+    line-height: 1.5 !important;
+    overflow: visible !important;
+    text-indent: 0 !important;
+}
+
+/* ==========================================================================
+   MICROSOFT WORD LIST STYLES (9 LEVELS HIERARCHY)
+   ========================================================================== */
+
+/* 1. Default Nested Bullets: • -> ○ -> ▪ -> ▫ */
+.ck-content ul:not([style*="list-style-type"]), .announcement-content ul:not([style*="list-style-type"]) { list-style-type: disc; }
+.ck-content ul ul:not([style*="list-style-type"]), .announcement-content ul ul:not([style*="list-style-type"]) { list-style-type: circle; }
+.ck-content ul ul ul:not([style*="list-style-type"]), .announcement-content ul ul ul:not([style*="list-style-type"]) { list-style-type: square; }
+.ck-content ul ul ul ul:not([style*="list-style-type"]), .announcement-content ul ul ul ul:not([style*="list-style-type"]) { list-style-type: '\25AB\00a0'; } /* ▫ small white square */
+.ck-content ul ul ul ul ul:not([style*="list-style-type"]), .announcement-content ul ul ul ul ul:not([style*="list-style-type"]) { list-style-type: disc; }
+.ck-content ul ul ul ul ul ul:not([style*="list-style-type"]), .announcement-content ul ul ul ul ul ul:not([style*="list-style-type"]) { list-style-type: circle; }
+.ck-content ul ul ul ul ul ul ul:not([style*="list-style-type"]), .announcement-content ul ul ul ul ul ul ul:not([style*="list-style-type"]) { list-style-type: square; }
+.ck-content ul ul ul ul ul ul ul ul:not([style*="list-style-type"]), .announcement-content ul ul ul ul ul ul ul ul:not([style*="list-style-type"]) { list-style-type: '\25AB\00a0'; }
+.ck-content ul ul ul ul ul ul ul ul ul:not([style*="list-style-type"]), .announcement-content ul ul ul ul ul ul ul ul ul:not([style*="list-style-type"]) { list-style-type: disc; }
+
+/* 2. Default Nested Numbering: 1. -> a. -> i. -> A. -> I. (only when no explicit style is set) */
+.ck-content ol:not([style*="list-style-type"]):not([type]), .announcement-content ol:not([style*="list-style-type"]):not([type]) { list-style-type: decimal; }
+.ck-content ol ol:not([style*="list-style-type"]):not([type]), .announcement-content ol ol:not([style*="list-style-type"]):not([type]) { list-style-type: lower-alpha; }
+.ck-content ol ol ol:not([style*="list-style-type"]):not([type]), .announcement-content ol ol ol:not([style*="list-style-type"]):not([type]) { list-style-type: lower-roman; }
+.ck-content ol ol ol ol:not([style*="list-style-type"]):not([type]), .announcement-content ol ol ol ol:not([style*="list-style-type"]):not([type]) { list-style-type: upper-alpha; }
+.ck-content ol ol ol ol ol:not([style*="list-style-type"]):not([type]), .announcement-content ol ol ol ol ol:not([style*="list-style-type"]):not([type]) { list-style-type: upper-roman; }
+.ck-content ol ol ol ol ol ol:not([style*="list-style-type"]):not([type]), .announcement-content ol ol ol ol ol ol:not([style*="list-style-type"]):not([type]) { list-style-type: decimal; }
+.ck-content ol ol ol ol ol ol ol:not([style*="list-style-type"]):not([type]), .announcement-content ol ol ol ol ol ol ol:not([style*="list-style-type"]):not([type]) { list-style-type: lower-alpha; }
+.ck-content ol ol ol ol ol ol ol ol:not([style*="list-style-type"]):not([type]), .announcement-content ol ol ol ol ol ol ol ol:not([style*="list-style-type"]):not([type]) { list-style-type: lower-roman; }
+.ck-content ol ol ol ol ol ol ol ol ol:not([style*="list-style-type"]):not([type]), .announcement-content ol ol ol ol ol ol ol ol ol:not([style*="list-style-type"]):not([type]) { list-style-type: upper-alpha; }
+
+/* CKEditor HTML type/style attribute support */
+.ck-content ol[type="A"], .ck-content ol[style*="upper-latin"], .ck-content ol[style*="upper-alpha"] { list-style-type: upper-alpha !important; }
+.ck-content ol[type="a"], .ck-content ol[style*="lower-latin"], .ck-content ol[style*="lower-alpha"] { list-style-type: lower-alpha !important; }
+.ck-content ol[type="I"], .ck-content ol[style*="upper-roman"] { list-style-type: upper-roman !important; }
+.ck-content ol[type="i"], .ck-content ol[style*="lower-roman"] { list-style-type: lower-roman !important; }
+.ck-content ol[type="1"], .ck-content ol[style*="decimal"] { list-style-type: decimal !important; }
+.ck-content ol[style*="decimal-leading-zero"] { list-style-type: decimal-leading-zero !important; }
+
+/* 3. Legal Multilevel Outline (1, 1.1, 1.1.1, 1.1.1.1 up to 9 levels) */
+.ck-content ol.list-multilevel-legal,
+.announcement-content ol.list-multilevel-legal,
+.ck-content .list-multilevel-legal ol,
+.announcement-content .list-multilevel-legal ol {
+    counter-reset: legal-item;
+    list-style-type: none !important;
+}
+
+.ck-content ol.list-multilevel-legal > li,
+.announcement-content ol.list-multilevel-legal > li,
+.ck-content .list-multilevel-legal li,
+.announcement-content .list-multilevel-legal li {
+    counter-increment: legal-item;
+    list-style-type: none !important;
+    position: relative;
+}
+
+.ck-content ol.list-multilevel-legal > li::before,
+.announcement-content ol.list-multilevel-legal > li::before,
+.ck-content .list-multilevel-legal li::before,
+.announcement-content .list-multilevel-legal li::before {
+    content: counters(legal-item, ".") " ";
+    font-weight: 600;
+    margin-right: 6px;
+    color: inherit;
+}
+
+/* 4. Roman Multilevel List (I. -> A. -> 1. -> a. -> (1) -> (a)) */
+.ck-content ol.list-multilevel-roman, .announcement-content ol.list-multilevel-roman { list-style-type: upper-roman !important; }
+.ck-content ol.list-multilevel-roman ol, .announcement-content ol.list-multilevel-roman ol { list-style-type: upper-alpha !important; }
+.ck-content ol.list-multilevel-roman ol ol, .announcement-content ol.list-multilevel-roman ol ol { list-style-type: decimal !important; }
+.ck-content ol.list-multilevel-roman ol ol ol, .announcement-content ol.list-multilevel-roman ol ol ol { list-style-type: lower-alpha !important; }
+.ck-content ol.list-multilevel-roman ol ol ol ol, .announcement-content ol.list-multilevel-roman ol ol ol ol { list-style-type: lower-roman !important; }
+
+/* 5. Multilevel Dropdown Styling in CKEditor */
+.ck.ck-dropdown .ck-dropdown__panel .ck-list .ck-button {
+    text-align: left !important;
+    padding: 8px 12px !important;
+    white-space: pre-line !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+}
+.ck.ck-dropdown .ck-dropdown__panel .ck-list .ck-button:hover {
+    background-color: #f1f5f9 !important;
+}
+
+/* 6. Clean Colon Table Alignment (Ratakan Titik Dua) */
+.ck-content table.cxc-colon-table,
+.announcement-content table.cxc-colon-table,
+.prose table.cxc-colon-table {
+    border: none !important;
+    border-collapse: collapse !important;
+    background: transparent !important;
+    width: 100% !important;
+    margin: 0.4em 0 !important;
+}
+.ck-content table.cxc-colon-table td,
+.announcement-content table.cxc-colon-table td,
+.prose table.cxc-colon-table td {
+    border: none !important;
+    background: transparent !important;
+    padding: 2px 6px 2px 0 !important;
+}
+
+/* 7. Borderless Table Support & Individual Cell Dimensions */
+.ck-content figure.table[style*="border-style:none"] table,
+.ck-content figure.table[style*="border-color:transparent"] table,
+.ck-content table.table-borderless,
+.ck-content table[style*="border:none"],
+.ck-content table[style*="border: 0"],
+.ck-content table[style*="border-style:none"],
+.ck-content table[style*="border-color:transparent"],
+.announcement-content table.table-borderless,
+.announcement-content table[style*="border:none"],
+.announcement-content table[style*="border: 0"],
+.announcement-content table[style*="border-style:none"],
+.announcement-content table[style*="border-color:transparent"] {
+    border: none !important;
+}
+
+.ck-content figure.table[style*="border-style:none"] td,
+.ck-content figure.table[style*="border-style:none"] th,
+.ck-content figure.table[style*="border-color:transparent"] td,
+.ck-content figure.table[style*="border-color:transparent"] th,
+.ck-content table.table-borderless td,
+.ck-content table.table-borderless th,
+.ck-content table[style*="border:none"] td,
+.ck-content table[style*="border:none"] th,
+.ck-content table[style*="border: 0"] td,
+.ck-content table[style*="border: 0"] th,
+.ck-content table[style*="border-style:none"] td,
+.ck-content table[style*="border-style:none"] th,
+.ck-content table[style*="border-color:transparent"] td,
+.ck-content table[style*="border-color:transparent"] th,
+.ck-content table td[style*="border-style:none"],
+.ck-content table th[style*="border-style:none"],
+.ck-content table td[style*="border-color:transparent"],
+.ck-content table th[style*="border-color:transparent"],
+.ck-content table td[style*="border:none"],
+.ck-content table th[style*="border:none"],
+.announcement-content table.table-borderless td,
+.announcement-content table.table-borderless th,
+.announcement-content table[style*="border:none"] td,
+.announcement-content table[style*="border:none"] th,
+.announcement-content table[style*="border: 0"] td,
+.announcement-content table[style*="border: 0"] th,
+.announcement-content table[style*="border-style:none"] td,
+.announcement-content table[style*="border-style:none"] th,
+.announcement-content table[style*="border-color:transparent"] td,
+.announcement-content table[style*="border-color:transparent"] th,
+.announcement-content table td[style*="border-style:none"],
+.announcement-content table th[style*="border-style:none"],
+.announcement-content table td[style*="border-color:transparent"],
+.announcement-content table th[style*="border-color:transparent"],
+.announcement-content table td[style*="border:none"],
+.announcement-content table th[style*="border:none"] {
+    border: none !important;
+}
+
+/* Allow custom widths and heights per cell down to 0.40cm (15px) */
+.ck-content table td,
+.ck-content table th,
+.ck-content table td[style*="width"],
+.ck-content table th[style*="width"],
+.announcement-content table td,
+.announcement-content table th {
+    min-width: 0.40cm !important;
+}
+
+.ck-content table td[style*="height"],
+.ck-content table th[style*="height"] {
+    min-height: 0 !important;
+}
+
+/* Eliminate CKEditor helper dashed / dotted outline on tables without border */
+.ck-widget.table table,
+.ck-widget.table table[style*="border:none"],
+.ck-widget.table table[style*="border-style:none"],
+.ck-widget.table table[style*="border:0"],
+.ck-widget.table table[style*="border-width:0"],
+.ck-widget.table table[style*="border-color:transparent"],
+.ck-editor__editable .table > table,
+.ck-editor__editable .table.layout-table > table,
+.ck-editor__editable .table.layout-table > table > tbody > tr > td {
+    outline: none !important;
+}
+
+.ck-editor__editable .table.layout-table > table > tbody > tr > td:not([style*="border:"], [style*="border-top"], [style*="border-bottom"], [style*="border-left"], [style*="border-right"], [style*="border-width"], [style*="border-style"], [style*="border-color"]) {
+    outline: none !important;
+    border: none !important;
+}
+
+/* When table is borderless or colon-table, completely suppress helper outline */
+.ck-content figure.table table.cxc-colon-table,
+.ck-content figure.table table.table-borderless,
+.ck-content figure.table table[style*="border-style:none"],
+.ck-content figure.table table[style*="border-color:transparent"],
+.ck-content figure.table table[style*="border:none"],
+.ck-content figure.table[style*="border-style:none"] table,
+.ck-content figure.table[style*="border-color:transparent"] table {
+    outline: none !important;
+}
+
+/* Ensure CKEditor <col> elements and cells can resize down to 0.40cm (15px) */
+.ck-content table col,
+.announcement-content table col {
+    min-width: 0.40cm !important;
+}
+
+.ck-content table col[style*="width: 0.4"],
+.ck-content table col[style*="width:0.4"],
+.ck-content table td[style*="width: 0.4"],
+.ck-content table td[style*="width:0.4"],
+.ck-content table th[style*="width: 0.4"],
+.ck-content table th[style*="width:0.4"] {
+    width: 0.40cm !important;
+    max-width: 0.40cm !important;
+    min-width: 0.40cm !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    text-align: center;
+}
+
+/* Independent column resizing: allow all columns to drag and resize cleanly */
+.ck-content .table table,
+.announcement-content .table table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.ck-content .table col,
+.ck-content .table td,
+.ck-content .table th {
+    box-sizing: border-box !important;
+}
