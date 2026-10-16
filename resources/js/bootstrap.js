@@ -87,7 +87,13 @@ window.axios.interceptors.request.use(async (config) => {
 
         if (url.includes('/api/units')) {
             config.adapter = async () => ({
-                data: MOCK_UNITS,
+                data: {
+                    data: MOCK_UNITS,
+                    current_page: 1,
+                    last_page: 1,
+                    total: MOCK_UNITS.length,
+                    per_page: 100
+                },
                 status: 200,
                 statusText: 'OK',
                 headers: {},

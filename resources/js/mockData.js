@@ -139,8 +139,10 @@ export const MOCK_NEWS = [
 ];
 
 export const MOCK_SETTINGS = [
-    { id: 1, section: 'background', image_name: 'halaman-user.png', title: 'Portal Background' },
-    { id: 2, section: 'logo', image_name: 'logo.png', title: 'PortalCXC' }
+    { id: 1, section: 'background', category: 'General', image_name: 'halaman-user.png', title: 'Portal Background' },
+    { id: 2, section: 'logo', category: 'General', image_name: 'logo.png', title: 'PortalCXC' },
+    { id: 3, section: 'Menu 1', category: 'Menu 1', title: 'Knowledge Base', url: '#', image_name: 'cxc-banking.png' },
+    { id: 4, section: 'Menu 2', category: 'Menu 2', title: 'SOP & Regulasi', url: '#', image_name: 'cxc-credit.png' }
 ];
 
 export const MOCK_DASHBOARD_STATS = {

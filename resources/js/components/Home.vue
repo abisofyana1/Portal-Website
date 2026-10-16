@@ -144,7 +144,14 @@ const searchQuery = ref('');
 // --- Portal Settings (declared early to avoid TDZ) ---
 const CACHE_KEY = 'portalSettingsCache';
 const portalSettings = ref([]);
-const backgroundUrl = ref('/images/halaman-user.png');
+const getImagePath = (path) => {
+    if (!path) return '';
+    if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) return path;
+    const clean = path.startsWith('/') ? path.slice(1) : path;
+    return `./${clean}`;
+};
+
+const backgroundUrl = ref(getImagePath('images/halaman-user.png'));
 
 // --- Menu News Banner (declared early to avoid TDZ) ---
 const menuNewsImages = ref({});
@@ -3045,7 +3052,7 @@ function startAutoSlide() {
 };
 
 const groupedMenuSettings = computed(() => {
-    const items = (portalSettings.value || []).filter(s => s.category.startsWith('Menu '));
+    const items = (portalSettings.value || []).filter(s => s && typeof s.category === 'string' && s.category.startsWith('Menu '));
     const groups = {};
     items.forEach(item => {
         if (!groups[item.category]) groups[item.category] = [];
@@ -4758,7 +4765,8 @@ const fetchParentOptions = async () => {
     try {
         // Fetch all active units for dropdown (simplified)
         const response = await axios.get('/api/units?per_page=100&status=Yes');
-        parentOptions.value = response.data.data.map(u => ({ id: u.id, name: u.name }));
+        const rawUnits = Array.isArray(response.data) ? response.data : (response.data?.data || []);
+        parentOptions.value = rawUnits.map(u => ({ id: u.id, name: u.name }));
     } catch (e) {
         console.error('Failed to fetch parent options', e);
     }
@@ -5659,7 +5667,7 @@ onUnmounted(() => {
             <header class="bg-white shadow h-14 flex items-center justify-between px-6 border-b border-gray-200">
                 <div class="flex items-center">
                     <!-- Brand/Logo -->
-                    <img :src="'/images/logo-cxc-knowledge.png'" alt="CXC Knowledge Logo" class="h-10 mr-4">
+                    <img :src="getImagePath('images/logo-cxc-knowledge.png')" alt="CXC Knowledge Logo" class="h-10 mr-4">
                     
                     <!-- Active Page Title -->
                     <div class="text-gray-700 font-semibold text-lg border-l-2 border-gray-300 pl-4" v-if="activeMenuName">
