@@ -32,6 +32,21 @@ ${cssLinks}
 </html>
 `;
 
+    // Fix absolute /build/assets/ font paths inside built CSS files so fonts resolve on GitHub Pages subpaths
+    const buildAssetsDir = path.join(__dirname, 'public', 'build', 'assets');
+    if (fs.existsSync(buildAssetsDir)) {
+        const files = fs.readdirSync(buildAssetsDir);
+        files.filter(f => f.endsWith('.css')).forEach(cssFile => {
+            const fullPath = path.join(buildAssetsDir, cssFile);
+            let cssContent = fs.readFileSync(fullPath, 'utf8');
+            if (cssContent.includes('/build/assets/')) {
+                cssContent = cssContent.replaceAll('/build/assets/', './');
+                fs.writeFileSync(fullPath, cssContent, 'utf8');
+                console.log(`✓ Patched font paths in ${cssFile}`);
+            }
+        });
+    }
+
     const targetPath = path.join(__dirname, 'public', 'index.html');
     fs.writeFileSync(targetPath, htmlContent, 'utf8');
     console.log('✓ Successfully generated public/index.html for GitHub Pages demo!');
