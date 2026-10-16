@@ -370,8 +370,15 @@ const isSuperAdmin = computed(() => {
 
 // Check for preview mode helper
 const checkPreviewMode = () => {
+    let previewUnit = null;
     const urlParams = new URLSearchParams(window.location.search);
-    const previewUnit = urlParams.get('preview');
+    if (urlParams.get('preview')) {
+        previewUnit = urlParams.get('preview');
+    } else if (window.location.hash.includes('?')) {
+        const hashQuery = window.location.hash.split('?')[1];
+        const hashParams = new URLSearchParams(hashQuery);
+        previewUnit = hashParams.get('preview');
+    }
 
     if (previewUnit) {
         // Try to find the actual correctly-cased unit name from parentOptions
@@ -594,6 +601,14 @@ const toggleMenu = (selectedMenu) => {
     }
 };
 
+const getKnowledgePreviewUrl = (unitName) => {
+    const isGitHubPages = window.location.hostname.endsWith('github.io') || window.location.protocol === 'file:' || window.location.hash.startsWith('#');
+    if (isGitHubPages) {
+        return `${window.location.origin}${window.location.pathname}#/home?preview=${encodeURIComponent(unitName.toLowerCase())}`;
+    }
+    return `${window.location.origin}/home?preview=${encodeURIComponent(unitName.toLowerCase())}`;
+};
+
 const handleMiddleClick = (event, menuName, childName = null) => {
     if (event.button === 1) { // Middle click
         event.preventDefault();
@@ -601,7 +616,7 @@ const handleMiddleClick = (event, menuName, childName = null) => {
         // Special Handling for Knowledge Preview (Home -> Knowledge [Unit])
         if (menuName === 'Home' && childName && childName.startsWith('Knowledge ')) {
             const unitName = childName.replace('Knowledge ', '').trim();
-            window.open(`${window.location.origin}/home?preview=${encodeURIComponent(unitName.toLowerCase())}`, '_blank');
+            window.open(getKnowledgePreviewUrl(unitName), '_blank');
             return;
         }
 
@@ -674,7 +689,7 @@ const selectSubmenu = (selectedChild) => {
     // Check for Knowledge (Preview) items
     if (selectedChild.name.startsWith('Knowledge ')) {
         const unitName = selectedChild.name.replace('Knowledge ', '').trim();
-        window.open(`${window.location.origin}/home?preview=${encodeURIComponent(unitName.toLowerCase())}`, '_blank');
+        window.open(getKnowledgePreviewUrl(unitName), '_blank');
         return;
     }
 
@@ -8489,7 +8504,7 @@ onUnmounted(() => {
     display: none !important;
 }
 :deep(.ck-content) i.fas {
-    font-family: "Font Awesome 5 Free" !important;
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
     font-weight: 900 !important;
     display: inline-block !important;
 }
