@@ -155,7 +155,7 @@ const login = async () => {
 <template>
     <div v-if="!isCheckingSession" class="min-h-screen flex items-center justify-center bg-gray-100" 
          :style="{ 
-            backgroundImage: portalBackground ? `url(${portalBackground})` : `url(${getImagePath('images/background.png')})`, 
+            backgroundImage: portalBackground ? `url(${portalBackground})` : `url(${getImagePath('images/1779789895_1778942904_19.png')})`, 
             backgroundSize: 'cover',
             backgroundPosition: 'center'
          }">

@@ -151,7 +151,7 @@ const getImagePath = (path) => {
     return `./${clean}`;
 };
 
-const backgroundUrl = ref(getImagePath('images/halaman-user.png'));
+const backgroundUrl = ref(getImagePath('images/1779789895_1778942904_19.png'));
 
 // --- Menu News Banner (declared early to avoid TDZ) ---
 const menuNewsImages = ref({});
