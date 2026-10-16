@@ -5712,7 +5712,7 @@ onUnmounted(() => {
             </header>
 
             <!-- Main Content Area -->
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-3 sm:p-6">
                 
                 <!-- Manage Portal Interface View -->
                 <div v-if="activeSubmenuName.startsWith('Portal Interface')" class="bg-[#f4f7f6] min-h-full flex flex-col">
@@ -6617,14 +6617,14 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Activity & Error Log View -->
-                <div v-if="activeSubmenuName === 'Activity Log'" class="bg-gray-50 rounded shadow-sm border border-gray-200 flex flex-col h-full relative p-6">
+                <div v-if="activeSubmenuName === 'Activity Log'" class="bg-gray-50 rounded shadow-sm border border-gray-200 flex flex-col h-full relative p-3 sm:p-6">
                     <!-- Title & Overview Stats -->
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                         <div>
-                            <h2 class="text-2xl font-bold text-gray-800 tracking-tight">System Monitor & Logs</h2>
-                            <p class="text-sm text-gray-500">Pusat pelacakan aktivitas dan analisis kesalahan aplikasi</p>
+                            <h2 class="text-xl sm:text-2xl font-bold text-gray-800 tracking-tight">System Monitor & Logs</h2>
+                            <p class="text-xs sm:text-sm text-gray-500">Pusat pelacakan aktivitas dan analisis kesalahan aplikasi</p>
                         </div>
-                        <div class="flex items-center space-x-2 mt-4 md:mt-0">
+                        <div class="flex items-center space-x-2 mt-3 md:mt-0">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
                                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>
                                 Logger Aktif
@@ -6633,7 +6633,7 @@ onUnmounted(() => {
                     </div>
 
                     <!-- Analytical Widgets -->
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
                         <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-xs flex items-center justify-between">
                             <div>
                                 <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Total Aktivitas</p>
@@ -6682,64 +6682,64 @@ onUnmounted(() => {
                     </div>
 
                     <!-- Security Diagnostics Section -->
-                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-xs mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                        <div @click="showDiagnosticsButtons = !showDiagnosticsButtons" class="flex items-center space-x-3 cursor-pointer select-none group">
-                            <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl group-hover:bg-indigo-100 transition-colors">
+                    <div class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-200 shadow-xs mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div @click="showDiagnosticsButtons = !showDiagnosticsButtons" class="flex items-center space-x-3 cursor-pointer select-none group w-full md:w-auto">
+                            <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl group-hover:bg-indigo-100 transition-colors flex-shrink-0">
                                 <i class="fas fa-shield-alt text-2xl"></i>
                             </div>
-                            <div>
+                            <div class="flex-1">
                                 <div class="flex items-center">
                                     <h4 class="font-bold text-gray-800 text-sm group-hover:text-indigo-600 transition-colors">Security & Antivirus Diagnostics</h4>
                                     <i class="fas ml-2 text-xs transition-all duration-300" :class="showDiagnosticsButtons ? 'fa-chevron-down text-indigo-600' : 'fa-chevron-right text-gray-400'"></i>
                                 </div>
-                                <p class="text-xs text-gray-500 mt-0.5">Pantau ancaman malware, trojan, dan status karantina Crowdstrike secara realtime. <span class="text-indigo-600 font-semibold">(Klik untuk menampilkan opsi diagnostik)</span></p>
+                                <p class="text-xs text-gray-500 mt-0.5">Pantau ancaman malware, trojan, dan status karantina Crowdstrike secara realtime. <span class="text-indigo-600 font-semibold">(Klik untuk opsi diagnostik)</span></p>
                             </div>
                         </div>
-                        <div v-if="showDiagnosticsButtons" class="flex flex-wrap gap-2 w-full md:w-auto animate-scale-up">
-                            <button @click="runSecurityScan" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-2 text-xs rounded-lg flex items-center space-x-1.5 transition-all shadow-xs cursor-pointer">
+                        <div v-if="showDiagnosticsButtons" class="flex flex-wrap gap-2 w-full md:w-auto animate-scale-up pt-2 md:pt-0 border-t md:border-t-0 border-gray-100">
+                            <button @click="runSecurityScan" class="flex-1 sm:flex-initial bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-2 text-xs rounded-lg flex items-center justify-center space-x-1.5 transition-all shadow-xs cursor-pointer">
                                 <i class="fas fa-shield-virus"></i>
-                                <span>Scan Keamanan Manual</span>
+                                <span>Scan Manual</span>
                             </button>
-                            <button @click="simulateMalware" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-3 py-2 text-xs rounded-lg flex items-center space-x-1.5 transition-all shadow-xs cursor-pointer">
+                            <button @click="simulateMalware" class="flex-1 sm:flex-initial bg-amber-500 hover:bg-amber-600 text-white font-bold px-3 py-2 text-xs rounded-lg flex items-center justify-center space-x-1.5 transition-all shadow-xs cursor-pointer">
                                 <i class="fas fa-bug"></i>
-                                <span>Simulasi Malware/Trojan</span>
+                                <span>Simulasi Malware</span>
                             </button>
-                            <button @click="simulateQuarantine" class="bg-rose-500 hover:bg-rose-600 text-white font-bold px-3 py-2 text-xs rounded-lg flex items-center space-x-1.5 transition-all shadow-xs cursor-pointer">
+                            <button @click="simulateQuarantine" class="flex-1 sm:flex-initial bg-rose-500 hover:bg-rose-600 text-white font-bold px-3 py-2 text-xs rounded-lg flex items-center justify-center space-x-1.5 transition-all shadow-xs cursor-pointer">
                                 <i class="fas fa-lock"></i>
-                                <span>Simulasi Karantina File</span>
+                                <span>Simulasi Karantina</span>
                             </button>
                         </div>
                     </div>
 
                     <!-- Dual Tab Navigation -->
-                    <div class="flex border-b border-gray-200 mb-6 bg-white rounded-t-xl p-2 pb-0">
+                    <div class="flex border-b border-gray-200 mb-6 bg-white rounded-t-xl p-1.5 sm:p-2 pb-0">
                         <button 
                             @click="activeLogTab = 'activity'" 
-                            class="flex items-center space-x-2 py-3 px-6 text-sm font-semibold border-b-2 transition-all duration-300"
+                            class="flex-1 sm:flex-initial flex items-center justify-center space-x-1.5 sm:space-x-2 py-2.5 sm:py-3 px-2 sm:px-6 text-xs sm:text-sm font-semibold border-b-2 transition-all duration-300"
                             :class="activeLogTab === 'activity' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
                         >
                             <i class="fas fa-users-cog"></i>
-                            <span>Log Aktivitas Pengguna</span>
-                            <span class="ml-1.5 px-2 py-0.5 text-xs font-bold rounded-full" :class="activeLogTab === 'activity' ? 'bg-indigo-100 text-indigo-850' : 'bg-gray-100 text-gray-600'">{{ activityPagination.total }}</span>
+                            <span class="truncate">Aktivitas</span>
+                            <span class="ml-1 sm:ml-1.5 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-bold rounded-full" :class="activeLogTab === 'activity' ? 'bg-indigo-100 text-indigo-850' : 'bg-gray-100 text-gray-600'">{{ activityPagination.total }}</span>
                         </button>
                         <button 
                             @click="activeLogTab = 'error'" 
-                            class="flex items-center space-x-2 py-3 px-6 text-sm font-semibold border-b-2 transition-all duration-300"
+                            class="flex-1 sm:flex-initial flex items-center justify-center space-x-1.5 sm:space-x-2 py-2.5 sm:py-3 px-2 sm:px-6 text-xs sm:text-sm font-semibold border-b-2 transition-all duration-300"
                             :class="activeLogTab === 'error' ? 'border-rose-600 text-rose-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
                         >
                             <i class="fas fa-exclamation-triangle"></i>
-                            <span>Log Error Sistem</span>
-                            <span class="ml-1.5 px-2 py-0.5 text-xs font-bold rounded-full" :class="activeLogTab === 'error' ? 'bg-rose-100 text-rose-850' : 'bg-gray-100 text-gray-600'">{{ errorPagination.total }}</span>
+                            <span class="truncate">Error Sistem</span>
+                            <span class="ml-1 sm:ml-1.5 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-bold rounded-full" :class="activeLogTab === 'error' ? 'bg-rose-100 text-rose-850' : 'bg-gray-100 text-gray-600'">{{ errorPagination.total }}</span>
                         </button>
                     </div>
 
                     <!-- Tab Content: Activity Log -->
-                    <div v-if="activeLogTab === 'activity'" class="flex flex-col flex-1 bg-white p-4 rounded-b-xl border-x border-b border-gray-100 shadow-2xs">
+                    <div v-if="activeLogTab === 'activity'" class="flex flex-col flex-1 bg-white p-3 sm:p-4 rounded-b-xl border-x border-b border-gray-100 shadow-2xs">
                         <!-- Filters -->
-                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
-                            <div class="flex flex-wrap items-center gap-3 flex-1">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 sm:gap-4 mb-4 pb-4 border-b border-gray-100">
+                            <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 flex-1 w-full">
                                 <!-- Search -->
-                                <div class="relative w-64">
+                                <div class="relative w-full sm:w-64">
                                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
                                         <i class="fas fa-search"></i>
                                     </span>
@@ -6755,7 +6755,7 @@ onUnmounted(() => {
                                 <select 
                                     v-model="activityFilters.module" 
                                     @change="fetchActivityLogs(1)"
-                                    class="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 bg-white"
+                                    class="w-full sm:w-auto border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 bg-white"
                                 >
                                     <option value="">Semua Modul</option>
                                     <option value="AUTH">AUTH (Keamanan/Sesi)</option>
@@ -6769,7 +6769,7 @@ onUnmounted(() => {
                                 <select 
                                     v-model="activityFilters.action" 
                                     @change="fetchActivityLogs(1)"
-                                    class="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 bg-white"
+                                    class="w-full sm:w-auto border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 bg-white"
                                 >
                                     <option value="">Semua Aksi</option>
                                     <option value="LOGIN">LOGIN</option>
@@ -6781,13 +6781,13 @@ onUnmounted(() => {
                                     <option value="UPLOAD">UPLOAD</option>
                                 </select>
                                 <!-- Date Range Filter -->
-                                <div class="flex items-center gap-1.5">
+                                <div class="flex items-center gap-1.5 w-full sm:w-auto flex-wrap">
                                     <span class="text-xs text-gray-500 font-medium whitespace-nowrap">Dari</span>
                                     <input
                                         type="date"
                                         v-model="activityFilters.date_from"
                                         @change="fetchActivityLogs(1)"
-                                        class="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white cursor-pointer"
+                                        class="flex-1 sm:flex-initial border border-gray-200 rounded-lg px-2 sm:px-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white cursor-pointer"
                                     />
                                     <span class="text-gray-400 text-sm">&ndash;</span>
                                     <span class="text-xs text-gray-500 font-medium whitespace-nowrap">Sampai</span>
@@ -6795,7 +6795,7 @@ onUnmounted(() => {
                                         type="date"
                                         v-model="activityFilters.date_to"
                                         @change="fetchActivityLogs(1)"
-                                        class="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white cursor-pointer"
+                                        class="flex-1 sm:flex-initial border border-gray-200 rounded-lg px-2 sm:px-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white cursor-pointer"
                                     />
                                 </div>
                                 <!-- Reset Filters -->
@@ -6807,10 +6807,10 @@ onUnmounted(() => {
                                 </button>
                             </div>
                             <!-- Action Buttons -->
-                            <div class="flex items-center space-x-2">
+                            <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
                                 <button 
                                     @click="downloadXLSX('activity')" 
-                                    class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold px-4 py-2 text-xs border border-emerald-200 rounded-lg flex items-center space-x-1.5 transition-all cursor-pointer shadow-2xs"
+                                    class="w-full sm:w-auto justify-center bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold px-4 py-2 text-xs border border-emerald-200 rounded-lg flex items-center space-x-1.5 transition-all cursor-pointer shadow-2xs"
                                 >
                                     <i class="fas fa-file-excel"></i>
                                     <span>Download ke .XLSX</span>
@@ -6904,12 +6904,12 @@ onUnmounted(() => {
                     </div>
 
                     <!-- Tab Content: Error Log -->
-                    <div v-if="activeLogTab === 'error'" class="flex flex-col flex-1 bg-white p-4 rounded-b-xl border-x border-b border-gray-100 shadow-2xs">
+                    <div v-if="activeLogTab === 'error'" class="flex flex-col flex-1 bg-white p-3 sm:p-4 rounded-b-xl border-x border-b border-gray-100 shadow-2xs">
                         <!-- Filters -->
-                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
-                            <div class="flex flex-wrap items-center gap-3 flex-1">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 sm:gap-4 mb-4 pb-4 border-b border-gray-100">
+                            <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 flex-1 w-full">
                                 <!-- Search -->
-                                <div class="relative w-64">
+                                <div class="relative w-full sm:w-64">
                                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
                                         <i class="fas fa-search"></i>
                                     </span>
@@ -6925,7 +6925,7 @@ onUnmounted(() => {
                                 <select 
                                     v-model="errorFilters.error_class" 
                                     @change="fetchErrorLogs(1)"
-                                    class="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 bg-white"
+                                    class="w-full sm:w-auto border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 bg-white"
                                 >
                                     <option value="">Semua Kelas Error</option>
                                     <option value="ClientSideJavaScriptError">ClientSideJavaScriptError (Frontend Browser)</option>
@@ -6938,13 +6938,13 @@ onUnmounted(() => {
                                     <option value="Symfony\Component\HttpKernel\Exception\NotFoundHttpException">NotFoundHttpException (Halaman Tidak Ditemukan)</option>
                                 </select>
                                 <!-- Date Range Filter -->
-                                <div class="flex items-center gap-1.5">
+                                <div class="flex items-center gap-1.5 w-full sm:w-auto flex-wrap">
                                     <span class="text-xs text-gray-500 font-medium whitespace-nowrap">Dari</span>
                                     <input
                                         type="date"
                                         v-model="errorFilters.date_from"
                                         @change="fetchErrorLogs(1)"
-                                        class="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:border-rose-500 bg-white cursor-pointer"
+                                        class="flex-1 sm:flex-initial border border-gray-200 rounded-lg px-2 sm:px-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-rose-500 focus:border-rose-500 bg-white cursor-pointer"
                                     />
                                     <span class="text-gray-400 text-sm">&ndash;</span>
                                     <span class="text-xs text-gray-500 font-medium whitespace-nowrap">Sampai</span>
@@ -6952,7 +6952,7 @@ onUnmounted(() => {
                                         type="date"
                                         v-model="errorFilters.date_to"
                                         @change="fetchErrorLogs(1)"
-                                        class="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:border-rose-500 bg-white cursor-pointer"
+                                        class="flex-1 sm:flex-initial border border-gray-200 rounded-lg px-2 sm:px-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-rose-500 focus:border-rose-500 bg-white cursor-pointer"
                                     />
                                 </div>
                                 <!-- Reset Filters -->
@@ -6964,11 +6964,11 @@ onUnmounted(() => {
                                 </button>
                             </div>
                             <!-- Action Buttons -->
-                            <div class="flex items-center space-x-2">
+                            <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
                                 <button 
                                     @click="solveAllErrors" 
                                     :disabled="!logStats.unsolvedError || logStats.unsolvedError === 0"
-                                    class="bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 disabled:hover:bg-emerald-600 text-white font-semibold px-3 py-2 text-xs rounded-lg flex items-center space-x-1.5 transition-all cursor-pointer shadow-2xs"
+                                    class="flex-1 sm:flex-initial justify-center bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 disabled:hover:bg-emerald-600 text-white font-semibold px-3 py-2 text-xs rounded-lg flex items-center space-x-1.5 transition-all cursor-pointer shadow-2xs"
                                     title="Selesaikan semua error yang belum solved"
                                 >
                                     <i class="fas fa-check-double"></i>
@@ -6976,7 +6976,7 @@ onUnmounted(() => {
                                 </button>
                                 <button 
                                     @click="downloadXLSX('error')" 
-                                    class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold px-4 py-2 text-xs border border-emerald-200 rounded-lg flex items-center space-x-1.5 transition-all cursor-pointer shadow-2xs"
+                                    class="flex-1 sm:flex-initial justify-center bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold px-4 py-2 text-xs border border-emerald-200 rounded-lg flex items-center space-x-1.5 transition-all cursor-pointer shadow-2xs"
                                 >
                                     <i class="fas fa-file-excel"></i>
                                     <span>Download ke .XLSX</span>
@@ -7055,7 +7055,7 @@ onUnmounted(() => {
                         </div>
 
                         <!-- Pagination -->
-                        <div class="p-2 border-t border-gray-200 bg-gray-50 flex items-center justify-between text-xs text-gray-600 mt-4 rounded-b">
+                        <div class="p-2 border-t border-gray-200 bg-gray-50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600 mt-4 rounded-b">
                             <div class="flex items-center space-x-2">
                                 <button @click="fetchErrorLogs(1)" :disabled="errorPagination.current_page === 1" class="px-2 py-1 border rounded bg-white hover:bg-gray-100 disabled:opacity-50"><i class="fas fa-step-backward"></i></button>
                                 <button @click="fetchErrorLogs(errorPagination.current_page - 1)" :disabled="errorPagination.current_page === 1" class="px-2 py-1 border rounded bg-white hover:bg-gray-100 disabled:opacity-50"><i class="fas fa-chevron-left"></i></button>
@@ -7065,7 +7065,7 @@ onUnmounted(() => {
                                 <button @click="fetchErrorLogs(errorPagination.current_page + 1)" :disabled="errorPagination.current_page === errorPagination.last_page" class="px-2 py-1 border rounded bg-white hover:bg-gray-100 disabled:opacity-50"><i class="fas fa-chevron-right"></i></button>
                                 <button @click="fetchErrorLogs(errorPagination.last_page)" :disabled="errorPagination.current_page === errorPagination.last_page" class="px-2 py-1 border rounded bg-white hover:bg-gray-100 disabled:opacity-50"><i class="fas fa-step-forward"></i></button>
                             </div>
-                            <div class="flex items-center space-x-2 text-xs font-bold text-gray-500">
+                            <div class="flex items-center space-x-2 text-xs font-bold text-gray-500 flex-wrap justify-center sm:justify-end">
                                 <span>Tampilkan:</span>
                                 <select v-model="errorPagination.per_page" @change="fetchErrorLogs(1)" class="border border-gray-300 rounded px-2 py-1 text-xs bg-white text-gray-700 cursor-pointer focus:outline-none focus:ring-1 focus:ring-rose-500">
                                     <option :value="20">20 data</option>
