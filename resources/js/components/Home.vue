@@ -1022,7 +1022,7 @@ const forceLogout = async (reason = 'timeout') => {
     localStorage.removeItem('portalSettingsCache');
     
     // Force redirect to login
-    window.location.href = '/'; 
+    router.push('/'); 
 };
 
 onUnmounted(() => {

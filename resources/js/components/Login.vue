@@ -17,6 +17,12 @@ const checkCapsLock = (event) => {
     }
 };
 
+const fillDemo = (u, p) => {
+    username.value = u;
+    password.value = p;
+    login();
+};
+
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
@@ -187,6 +193,25 @@ const login = async () => {
                     </button>
                 </div>
             </form>
+
+            <!-- Quick Demo Accounts (1-Click Test) -->
+            <div class="mt-5 pt-4 border-t border-gray-200">
+                <div class="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2 text-center">
+                    <i class="fas fa-flask text-teal-600 mr-1"></i> Quick Demo Accounts (1-Click)
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                    <button type="button" @click="fillDemo('superadmin_demo', 'password123')" class="px-2 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-[11px] font-semibold rounded border border-emerald-200 transition text-center cursor-pointer">
+                        Super Admin
+                    </button>
+                    <button type="button" @click="fillDemo('admin_banking', 'password123')" class="px-2 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-800 text-[11px] font-semibold rounded border border-blue-200 transition text-center cursor-pointer">
+                        Admin Unit
+                    </button>
+                    <button type="button" @click="fillDemo('agent_banking', 'password123')" class="px-2 py-1.5 bg-purple-50 hover:bg-purple-100 text-purple-800 text-[11px] font-semibold rounded border border-purple-200 transition text-center cursor-pointer">
+                        Agent Unit
+                    </button>
+                </div>
+            </div>
+
             <div class="mt-4 text-center">
                 <p class="text-xs text-gray-500">
                     &copy; 2026 PortalCXC. All rights reserved.

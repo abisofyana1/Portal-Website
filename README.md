@@ -1,59 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PortalCXC - Contact Center Knowledge Portal
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi Web Portal Knowledge Base & Management Dashboard Contact Center berbasis **Laravel 12** dan **Vue.js 3**.
 
-## About Laravel
+Tersedia **Standalone Live Demo (100% Client-Side)** yang dapat dijalankan langsung di browser via **GitHub Pages** tanpa memerlukan server PHP atau database.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🌐 Live Demo di GitHub Pages
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Live demo aplikasi ini berjalan langsung di browser via GitHub Pages:
+> **URL Demo:** `https://abisofyana1.github.io/Portal-Website/`
 
-## Learning Laravel
+### 🔑 Akun Pengujian (Testing Credentials)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Pada halaman Login, tersedia tombol **1-Click Quick Demo** atau Anda dapat memasukkan kredensial berikut:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| No | Role | Username | Password | Deskripsi / Tampilan yang Ditampilkan |
+|---|---|---|---|---|
+| 1 | **Super Admin** | `superadmin_demo` | `password123` | Akses penuh ke seluruh menu: Manage User, Manage Unit, Activity Log, Error Log, Portal Interface, dan semua Knowledge Unit. |
+| 2 | **Admin Unit** | `admin_banking` | `password123` | Akses level Admin terisolasi khusus **Unit Banking** (kelola konten, user, dan dashboard unit bersangkutan). |
+| 3 | **Agent Unit** | `agent_banking` | `password123` | Tampilan layout antarmuka **Agent Unit Banking** untuk membaca news, banner, knowledge portal, dan carousel promo. |
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## ⚙️ Cara Mengaktifkan GitHub Pages (Sekali Saja di GitHub)
 
-### Premium Partners
+Setelah Anda melakukan `commit` dan `push` kode ini ke repository GitHub:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. Buka repository Anda di GitHub: **`abisofyana1/Portal-Website`**.
+2. Masuk ke menu **Settings** > **Pages** (di sidebar kiri).
+3. Pada bagian **Build and deployment**:
+   - **Source**: Pilih **Deploy from a branch**.
+   - **Branch**: Pilih branch **`gh-pages`** dan folder **`/(root)`**.
+   - Klik **Save**.
+4. GitHub Actions akan secara otomatis menjalankan workflow `.github/workflows/deploy-pages.yml` setiap kali Anda melakukan push ke branch `master`.
+5. Tunggu sekitar 1–2 menit, Live Demo Anda sudah bisa diakses publik secara online di:
+   `https://abisofyana1.github.io/Portal-Website/`
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 💻 Menjalankan Demo Secara Lokal Tanpa Database
 
-## Code of Conduct
+Anda juga dapat membuka aplikasi secara lokal langsung tanpa database:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Jalankan build:
+   ```bash
+   npm install
+   npm run build
+   ```
+2. Buka file `public/index.html` menggunakan live-server / extension browser, atau:
+   ```bash
+   npx serve public
+   ```
+   Lalu buka URL yang muncul di browser dan login dengan salah satu akun di atas.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📋 Fitur Utama
+- **Multi-Role & Unit Isolation**: Isolasi data antar unit/divisi (Banking, Credit, Emerald, Merchant, SAT, TnR, dll).
+- **Dual Layout System**: Layout Admin Dashboard dan Layout Agent Portal.
+- **Knowledge Base & Interactive News**: Running text, headline banner, promo slider, serta viewer lampiran dokumen.
+- **System Monitoring**: Real-time Error Log tracking, Activity Logs, dan simulasi Security Scanner.
