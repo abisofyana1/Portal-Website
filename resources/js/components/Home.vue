@@ -131,6 +131,7 @@ const isAppLoading = ref(true);
 
 const currentUser = ref(null);
 const selectedRoleObj = ref(null);
+const isMobileSidebarOpen = ref(false);
 
 // --- Agent News Carousel Logic (declared early to avoid TDZ) ---
 const agentNews = shallowRef([]); // For List Modal / Popups
@@ -5599,11 +5600,19 @@ onUnmounted(() => {
     </div>
 
     <!-- Admin Layout (Sidebar + Default) -->
-    <div v-else-if="currentLayout === 'admin'" class="flex h-screen bg-gray-100 font-sans">
-        <!-- Sidebar -->
-        <aside class="w-64 bg-gray-900 text-white flex flex-col">
+    <div v-else-if="currentLayout === 'admin'" class="flex h-screen bg-gray-100 font-sans relative overflow-hidden">
+        <!-- Mobile Sidebar Backdrop Overlay -->
+        <div v-if="isMobileSidebarOpen" @click="isMobileSidebarOpen = false" class="fixed inset-0 bg-black/60 z-40 md:hidden backdrop-blur-xs transition-opacity"></div>
+
+        <!-- Sidebar (Desktop: Static, Mobile: Off-canvas Drawer) -->
+        <aside 
+            class="w-64 bg-gray-900 text-white flex flex-col fixed md:static inset-y-0 left-0 z-50 transform md:transform-none transition-transform duration-300 ease-in-out shadow-2xl md:shadow-none"
+            :class="isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'">
             <!-- User Profile Section -->
-            <div class="p-4 bg-teal-700 text-center">
+            <div class="p-4 bg-teal-700 text-center relative">
+                <button @click="isMobileSidebarOpen = false" class="md:hidden absolute top-3 right-3 text-white/80 hover:text-white p-1.5 rounded-lg hover:bg-teal-800 transition">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
                 <div class="w-16 h-16 mx-auto rounded-full bg-white mb-2 flex items-center justify-center text-gray-800 text-2xl font-bold">
                     {{ userInitials }}
                 </div>
@@ -5634,7 +5643,7 @@ onUnmounted(() => {
                             <li v-for="child in menu.children" :key="child.name">
                                 <div class="pl-8 pr-2 py-1">
                                     <a href="#" 
-                                       @click.prevent="child.children ? child.isOpen = !child.isOpen : selectSubmenu(child)"
+                                       @click.prevent="child.children ? child.isOpen = !child.isOpen : (selectSubmenu(child), isMobileSidebarOpen = false)"
                                        @mousedown="handleMiddleClick($event, menu.name, child.name)"
                                        class="block px-4 py-2 text-sm transition-colors rounded-r-md flex items-center justify-between"
                                        :class="(child.active || (child.children && child.children.some(c => c.active))) ? 'bg-teal-600 text-white border-l-4 border-teal-300' : 'text-gray-400 hover:text-white hover:bg-gray-700'">
@@ -5650,7 +5659,7 @@ onUnmounted(() => {
                                 <ul v-if="child.children && child.isOpen" class="bg-gray-900 border-l border-gray-700 ml-12 mr-2">
                                     <li v-for="subchild in child.children" :key="subchild.name">
                                         <a href="#" 
-                                           @click.prevent="selectSubmenu(subchild); child.active = true;"
+                                           @click.prevent="selectSubmenu(subchild); child.active = true; isMobileSidebarOpen = false;"
                                            class="block pl-4 pr-2 py-1.5 text-xs transition-colors rounded flex items-center my-1"
                                            :class="subchild.active ? 'text-teal-400 font-bold' : 'text-gray-500 hover:text-teal-300'">
                                             <i :class="`fas fa-${subchild.icon || 'circle'} mr-2 w-3 text-center text-[8px]`"></i>
@@ -5677,15 +5686,20 @@ onUnmounted(() => {
         </aside>
 
         <!-- Main Content Wrapper -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col overflow-hidden w-full">
             <!-- Top Header -->
-            <header class="bg-white shadow h-14 flex items-center justify-between px-6 border-b border-gray-200">
-                <div class="flex items-center">
+            <header class="bg-white shadow h-14 flex items-center justify-between px-4 sm:px-6 border-b border-gray-200">
+                <div class="flex items-center gap-3">
+                    <!-- Hamburger Toggle Button for Mobile -->
+                    <button @click="isMobileSidebarOpen = !isMobileSidebarOpen" class="md:hidden text-gray-700 hover:text-teal-600 focus:outline-none p-1.5 rounded-lg hover:bg-gray-100 transition" title="Toggle Menu">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+
                     <!-- Brand/Logo -->
-                    <img :src="getImagePath('images/logo-cxc-knowledge.png')" alt="CXC Knowledge Logo" class="h-10 mr-4">
+                    <img :src="getImagePath('images/logo-cxc-knowledge.png')" alt="CXC Knowledge Logo" class="h-8 sm:h-10 mr-2 sm:mr-4 object-contain">
                     
                     <!-- Active Page Title -->
-                    <div class="text-gray-700 font-semibold text-lg border-l-2 border-gray-300 pl-4" v-if="activeMenuName">
+                    <div class="text-gray-700 font-semibold text-sm sm:text-lg border-l-2 border-gray-300 pl-3 sm:pl-4 truncate max-w-[180px] sm:max-w-none" v-if="activeMenuName">
                         {{ activeMenuName }}
                         <span v-if="activeSubmenuName" class="text-gray-500 font-normal">
                              &rsaquo; {{ activeSubmenuName }}
