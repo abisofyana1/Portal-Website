@@ -63,7 +63,7 @@
                              <!-- Case 2: Single Item or fallback -->
                              <div v-else @click="handlePortalItemClick(getMenuItems('Menu 1')[0] || { title: 'Menu 1' })" @mousedown="getMenuItems('Menu 1')[0] ? handleMiddleClickPortal($event, getMenuItems('Menu 1')[0]) : null"
                                   class="h-full flex flex-col justify-start cursor-pointer">
-                                 <h3 class="font-bold text-lg leading-tight mb-2 uppercase">{{ getMenuItems('Menu 1')[0]?.title || 'TENTANG BNI' }}</h3>
+                                 <h3 class="font-bold text-lg leading-tight mb-2 uppercase">{{ getMenuItems('Menu 1')[0]?.title || 'TENTANG KAMI' }}</h3>
                                  <div class="absolute bottom-0 left-0 right-0 bg-black/10 backdrop-blur-[1px] px-4 py-1.5 flex items-center">
                                     <span class="text-[10px] font-bold tracking-wider uppercase flex items-center text-white/90">
                                         <i class="fas fa-info-circle mr-2 opacity-70"></i> Menu 1

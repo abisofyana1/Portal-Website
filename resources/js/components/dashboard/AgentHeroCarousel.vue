@@ -69,7 +69,7 @@
             </div>
             <div v-else class="absolute inset-0 bg-gray-100 flex items-center justify-center bg-[url('/images/banner_bg.jpg')] bg-cover bg-center">
                 <div class="text-center p-8 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200 shadow-sm">
-                    <h2 class="text-5xl font-black text-orange-600 mb-2 tracking-tighter filter drop-shadow-sm">BNI</h2>
+                    <h2 class="text-5xl font-black text-orange-600 mb-2 tracking-tighter filter drop-shadow-sm">PORTAL</h2>
                     <h3 class="text-2xl font-bold text-gray-700 uppercase tracking-wide">Welcome</h3>
                     <p class="text-xs text-gray-500 mt-2 font-mono">No News Available</p>
                 </div>

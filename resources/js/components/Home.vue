@@ -5462,7 +5462,7 @@ onUnmounted(() => {
                         <img :src="agentLogoSrc" alt="CXC Globe" class="h-8 w-8 sm:h-12 sm:w-12 lg:h-14 lg:w-14 object-contain hover:rotate-12 transition-transform duration-300 drop-shadow-[0_4px_12px_rgba(255,255,255,0.2)] flex-shrink-0" />
                     </div>
 
-                    <!-- Right Controls in Mobile Header: Nav Icons & BNI Logo -->
+                    <!-- Right Controls in Mobile Header: Nav Icons & Contact Logo -->
                     <div class="flex items-center space-x-2">
                         <!-- Nav Icons -->
                         <div class="flex items-center space-x-1 sm:space-x-2 relative flex-shrink-0">
@@ -5524,8 +5524,8 @@ onUnmounted(() => {
                             </transition>
                         </div>
 
-                        <!-- Mobile BNI logo right next to icons -->
-                        <img :src="getImagePath('images/logo-bni.png')" alt="BNI Call" class="h-7 object-contain drop-shadow-md md:hidden flex-shrink-0">
+                        <!-- Mobile Contact Us logo right next to icons -->
+                        <img :src="getImagePath('images/Icon-Contact-as.png')" alt="Contact Center" class="h-8 object-contain drop-shadow-md md:hidden flex-shrink-0">
                     </div>
                 </div>
 
@@ -5563,9 +5563,9 @@ onUnmounted(() => {
                     <div v-if="isSearchDropdownOpen" @click="isSearchDropdownOpen = false" class="fixed inset-0 z-[40] cursor-default"></div>
                 </div>
                 
-                <!-- Right: BNI Call Logo (Desktop only, 1 Col) -->
+                <!-- Right: Contact Us Logo (Desktop only, 1 Col) -->
                  <div class="hidden md:flex md:col-span-1 justify-end">
-                     <img :src="getImagePath('images/logo-bni.png')" alt="BNI Call" class="h-8 sm:h-10 lg:h-12 object-contain drop-shadow-lg transform scale-110 origin-right flex-shrink-0">
+                     <img :src="getImagePath('images/Icon-Contact-as.png')" alt="Contact Center" class="h-9 sm:h-11 lg:h-13 object-contain drop-shadow-lg transform scale-110 origin-right flex-shrink-0">
                  </div>
             </div>
         </header>
@@ -5727,7 +5727,7 @@ onUnmounted(() => {
                         <div>
                             <h1 class="text-2xl font-normal text-gray-700">Manage Web Portal</h1>
                              <div class="text-[10px] text-gray-400 mt-1 uppercase tracking-widest font-bold">
-                                YOU ARE HERE: Portal BNI <span class="mx-1">&rsaquo;</span> Manage Web <span class="mx-1">&rsaquo;</span> Manage Web Portal
+                                YOU ARE HERE: Web Portal <span class="mx-1">&rsaquo;</span> Manage Web <span class="mx-1">&rsaquo;</span> Manage Web Portal
                             </div>
                         </div>
                         <button @click="savePortalSettings" class="bg-teal-600 text-white px-6 py-2 rounded shadow-md hover:bg-teal-700 transition font-bold text-sm uppercase tracking-wide">
