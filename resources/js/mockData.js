@@ -141,8 +141,21 @@ export const MOCK_NEWS = [
 export const MOCK_SETTINGS = [
     { id: 1, section: 'background', category: 'General', image_name: '1779789895_1778942904_19.png', title: 'Portal Background' },
     { id: 2, section: 'logo', category: 'General', image_name: 'logo.png', title: 'PortalCXC' },
-    { id: 3, section: 'Menu 1', category: 'Menu 1', title: 'Knowledge Base', url: '#', image_name: 'cxc-banking.png' },
-    { id: 4, section: 'Menu 2', category: 'Menu 2', title: 'SOP & Regulasi', url: '#', image_name: 'cxc-credit.png' }
+    { id: 3, section: 'Menu 1', category: 'Menu 1', title: 'Knowledge Base', url: '#/news', image_name: '3d/menu-1-knowledge.svg' },
+    { id: 4, section: 'Menu 2', category: 'Menu 2', title: 'App Directory', url: '#', image_name: '3d/menu-2-apps.svg' },
+    { id: 5, section: 'Menu 3', category: 'Menu 3', title: 'Portal Menu', url: '#', image_name: '3d/menu-3-portal.svg' },
+    { id: 6, section: 'Menu 4', category: 'Menu 4', title: 'Workflows & Forms', url: '#', image_name: '3d/menu-4-options.svg' },
+    { id: 7, section: 'Menu 5', category: 'Menu 5', title: 'News Bulletin', url: '#/news', image_name: '3d/menu-5-news.svg' },
+    { id: 8, section: 'Menu 6', category: 'Menu 6', title: 'Sharing Moment', url: '#', image_name: '3d/menu-6-sharing.svg' },
+    { id: 9, section: 'Menu 7', category: 'Menu 7', title: 'Hero Highlights', url: '#', image_name: '3d/menu-7-banner.svg' },
+    { id: 10, section: 'Menu 8', category: 'Menu 8', title: 'Suku Bunga & Kurs', url: '#', image_name: '3d/menu-8-rates.svg' },
+    { id: 11, section: 'Menu 9', category: 'Menu 9', title: 'Giro Korporasi', url: '#', image_name: '3d/menu-9-giro.svg' },
+    { id: 12, section: 'Menu 10', category: 'Menu 10', title: 'Promo & Rewards', url: '#', image_name: '3d/menu-10-promo.svg' },
+    { id: 13, section: 'Menu 11', category: 'Menu 11', title: 'Alerts & Notice', url: '#', image_name: '3d/menu-11-alert.svg' },
+    { id: 14, section: 'Menu 12', category: 'Menu 12', title: 'Quick Links', url: '#', image_name: '3d/menu-12-links.svg' },
+    { id: 15, section: 'Menu 13', category: 'Menu 13', title: 'Simulasi Hitung', url: '#', image_name: '3d/menu-13-calculator.svg' },
+    { id: 16, section: 'Menu 14', category: 'Menu 14', title: 'SOP & Guides', url: '#', image_name: '3d/menu-14-guide.svg' },
+    { id: 17, section: 'Menu 15', category: 'Menu 15', title: 'External Tools', url: '#', image_name: '3d/menu-15-external.svg' }
 ];
 
 export const MOCK_DASHBOARD_STATS = {
