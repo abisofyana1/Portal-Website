@@ -11,7 +11,7 @@ Dokumen ini berisi data yang siap Anda **Copy & Paste** ke dalam form modal **"T
 | **Judul Project \*** | `PortalCXC - Contact Center Knowledge Portal & Monitoring System` | Nama resmi aplikasi |
 | **Tahun** | `2026` | Tahun pengembangan / rilis |
 | **Kategori \*** | `Web Application` | Pilih dari dropdown |
-| **URL Thumbnail Gambar** | `https://raw.githubusercontent.com/abisofyana1/Portal-Website/master/public/images/1779789895_1778942904_19.png` | Banner / preview aplikasi |
+| **URL Thumbnail Gambar** | `https://raw.githubusercontent.com/abisofyana1/Portal-Website/master/Gambar%20Aplikasi%20Knowledge.png` *(atau `https://raw.githubusercontent.com/abisofyana1/Portal-Website/master/public/images/Gambar-Aplikasi-Knowledge.png`)* | Banner / preview aplikasi |
 | **Deskripsi Project \*** | *(Pilih salah satu versi di bawah)* | Penjelasan lengkap project |
 | **Teknologi (Pisahkan dengan koma)** | `Vue.js 3, Vite, Tailwind CSS, FontAwesome 6, Laravel, PHP, PostgreSQL, Axios, GitHub Pages` | Stack teknologi yang digunakan |
 | **Status Project** | `Completed` | Pilih dari dropdown |
